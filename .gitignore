@@ -8,8 +8,11 @@
 *.ctxt
 
 #Folder for exclusion
-/target/
-/classes/
+target/
+*.logs
+*.iml
+.idea/
+.eclipse
 
 # Mobile Tools for Java (J2ME)
 .mtj.tmp/
