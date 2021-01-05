@@ -9,5 +9,8 @@
     <Root level="DEBUG" additivity="false">
       <AppenderRef ref="Console"/>
     </Root>
+    <logger name="com.framework">
+    	<AppenderRef ref="Console"/>
+    </logger>
   </Loggers>
 </Configuration>

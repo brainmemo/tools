@@ -5,4 +5,4 @@
  * @author sahayk1
  *
  */
-package framework.entities;
+package com.framework.entities;
