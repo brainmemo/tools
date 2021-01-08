@@ -15,7 +15,7 @@
   http://www.springframework.org/schema/tx 
   http://www.springframework.org/schema/tx/spring-tx.xsd">
     <!-- Add support for component scanning -->
-    <context:component-scan base-package="com.framework.entities,com.framework.controller" />
+    <context:component-scan base-package="com.framework.entities.tabs,com.framework.controller" />
     <!-- Add support for conversion, formatting and validation support -->
     <mvc:annotation-driven/>
     <!-- Define Spring MVC view resolver -->
@@ -43,7 +43,7 @@
     <bean id="sessionFactory"
   class="org.springframework.orm.hibernate5.LocalSessionFactoryBean">
         <property name="dataSource" ref="myDataSource" />
-        <property name="packagesToScan" value="com.framework.entities" />
+        <property name="packagesToScan" value="com.framework.entities.tabs" />
         <property name="hibernateProperties">
             <props>
                 <prop key="hibernate.dialect">org.hibernate.dialect.MySQL8Dialect</prop>

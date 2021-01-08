@@ -19,10 +19,10 @@
     <property name="hbm2ddl.auto">update</property>
     
     
-    <mapping class="com.framework.entities.GenericColumns"/>
-    <mapping class="com.framework.entities.IndividualTabs"/>
-    <mapping class="com.framework.entities.MenuTemplate"/>
-    <mapping class="com.framework.entities.TabLayout"/>
-    <mapping class="com.framework.entities.Template"/>
+    <mapping class="com.framework.entities.tabs.GenericColumns"/>
+    <mapping class="com.framework.entities.tabs.IndividualTabs"/>
+    <mapping class="com.framework.entities.tabs.MenuTemplate"/>
+    <mapping class="com.framework.entities.tabs.TabLayout"/>
+    <mapping class="com.framework.entities.tabs.Template"/>
   </session-factory>
 </hibernate-configuration>

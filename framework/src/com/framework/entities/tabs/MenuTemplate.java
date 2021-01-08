@@ -1,4 +1,4 @@
-package com.framework.entities;
+package com.framework.entities.tabs;
 
 import java.io.Serializable;
 
