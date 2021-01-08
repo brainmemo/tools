@@ -1,6 +1,6 @@
 package com.framework.entities;
 
-import java.util.Date;
+import java.io.Serializable;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -9,10 +9,14 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 @Entity
-public class MenuTemplate extends GenericColumns {
+public class MenuTemplate extends GenericColumns implements Serializable {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	@Id
-	@GeneratedValue(strategy = GenerationType.SEQUENCE)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long menu_id;
 	@Column(length=100)
 	private String menu_name;
@@ -23,16 +27,9 @@ public class MenuTemplate extends GenericColumns {
 	@OneToOne
 	private TabLayout verticalLayout;
 	private int isActive;
-	public MenuTemplate(String createdByUser, String updatedByUser, Date createdDate, Date updatedDate,
-			String is_deleted, Long menu_id, String menu_name, Template template, TabLayout horizontalLayout,
-			TabLayout verticalLayout, int isActive) {
-		super(createdByUser, updatedByUser, createdDate, updatedDate, is_deleted);
-		this.menu_id = menu_id;
-		this.menu_name = menu_name;
-		this.template = template;
-		this.horizontalLayout = horizontalLayout;
-		this.verticalLayout = verticalLayout;
-		this.isActive = isActive;
+	
+	public MenuTemplate() {
+		//super();
 	}
 	public Long getMenu_id() {
 		return menu_id;

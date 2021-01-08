@@ -8,7 +8,7 @@
   <properties>
   	<spring.version>5.3.2</spring.version>
   	<spring-data-jpa>2.4.2</spring-data-jpa>
-	<hibernate-entitymanager>6.0.0.Alpha6</hibernate-entitymanager>
+	<hibernate-entitymanager> 5.4.27.Final</hibernate-entitymanager>
 	<ehcache>3.9.0</ehcache>
 	<liquibase>4.2.2</liquibase>
 	<javax.servlet>3.1.0</javax.servlet>

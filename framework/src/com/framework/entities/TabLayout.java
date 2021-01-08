@@ -1,7 +1,7 @@
 package com.framework.entities;
 
+import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -9,16 +9,22 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToOne;
 
 @Entity
-public class TabLayout extends GenericColumns {
+public class TabLayout extends GenericColumns implements Serializable {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long layoutid;
 	
 	@Column(nullable = false, length = 250)
@@ -31,17 +37,14 @@ public class TabLayout extends GenericColumns {
 	@OneToOne(fetch = FetchType.EAGER)
 	private TabLayout assocLayout;
 	private boolean isGroup=false;
+	@OneToOne
+	private Template template;
 	
 	
 	
-	public TabLayout(String createdByUser, String updatedByUser, Date createdDate, Date updatedDate, String is_deleted,
-			Long layoutid, String layoutName, List<IndividualTabs> tabs, TabLayout assocLayout, boolean isGroup) {
-		super(createdByUser, updatedByUser, createdDate, updatedDate, is_deleted);
-		this.layoutid = layoutid;
-		this.layoutName = layoutName;
-		this.tabs = tabs;
-		this.assocLayout = assocLayout;
-		this.isGroup = isGroup;
+	 
+	public TabLayout() {
+		//super();
 	}
 	public Long getLayoutid() {
 		return layoutid;

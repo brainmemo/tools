@@ -3,10 +3,16 @@ package com.framework.entities;
 import java.util.Date;
 
 import javax.persistence.Column;
+import javax.persistence.DiscriminatorColumn;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.MappedSuperclass;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 
+@MappedSuperclass
 public abstract class GenericColumns {
 	
 	@Column(length=500)
@@ -19,15 +25,21 @@ public abstract class GenericColumns {
 	private Date updatedDate;
 	@Column(length = 2)
 	private String is_deleted;
-	public GenericColumns(String createdByUser, String updatedByUser, Date createdDate, Date updatedDate,
-			String is_deleted) {
-		super();
-		this.createdByUser = createdByUser;
-		this.updatedByUser = updatedByUser;
-		this.createdDate = createdDate;
-		this.updatedDate = updatedDate;
-		this.is_deleted = is_deleted;
+	
+	
+	
+	public GenericColumns() {
+		//super();
 	}
+	
+	
+
+	
+
+
+	
+
+
 	public String getCreatedByUser() {
 		return createdByUser;
 	}

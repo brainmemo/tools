@@ -1,43 +1,65 @@
 package com.framework.entities;
 
+import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
-import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 @Entity
-public class IndividualTabs extends GenericColumns {
+public class IndividualTabs extends GenericColumns implements Serializable {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long tabid;
 	
 	@Column(nullable = false, length = 50)
 	private String tabDisplayName;
+	@Column(length = 500, nullable = false)
+	private String tabAction;
 	
-	@ManyToOne(optional = false, fetch = FetchType.EAGER)
-	private PageURI pageid;
+	
+	@OneToOne
+	private Template tempalte;
 	
 	@ManyToMany(mappedBy = "tabs", cascade = CascadeType.ALL)
 	private List<TabLayout> layout = new ArrayList<TabLayout>();
+	 
 	
 	
 	
-	public IndividualTabs(String createdByUser, String updatedByUser, Date createdDate, Date updatedDate,
-			String is_deleted, Long tabid, String tabDisplayName, PageURI pageid, List<TabLayout> layout) {
-		super(createdByUser, updatedByUser, createdDate, updatedDate, is_deleted);
-		this.tabid = tabid;
-		this.tabDisplayName = tabDisplayName;
-		this.pageid = pageid;
+	
+	public String getTabAction() {
+		return tabAction;
+	}
+	public void setTabAction(String tabAction) {
+		this.tabAction = tabAction;
+	}
+	public Template getTempalte() {
+		return tempalte;
+	}
+	public void setTempalte(Template tempalte) {
+		this.tempalte = tempalte;
+	}
+	public List<TabLayout> getLayout() {
+		return layout;
+	}
+	public void setLayout(List<TabLayout> layout) {
 		this.layout = layout;
 	}
-	
+	public IndividualTabs() {
+		//super();
+	}
 	public Long getTabid() {
 		return tabid;
 	}
@@ -50,20 +72,6 @@ public class IndividualTabs extends GenericColumns {
 	public void setTabDisplayName(String tabDisplayName) {
 		this.tabDisplayName = tabDisplayName;
 	}
-	public PageURI getPageid() {
-		return pageid;
-	}
-	public void setPageid(PageURI pageid) {
-		this.pageid = pageid;
-	}
-	public List<TabLayout> getLayout() {
-		return layout;
-	}
-	public void setLayout(List<TabLayout> layout) {
-		this.layout = layout;
-	}
-	
-	
 	
 	
 }
