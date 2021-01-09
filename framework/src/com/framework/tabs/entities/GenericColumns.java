@@ -1,12 +1,9 @@
-package com.framework.entities.tabs;
+package com.framework.tabs.entities;
 
 import java.util.Date;
+import java.util.UUID;
 
 import javax.persistence.Column;
-import javax.persistence.DiscriminatorColumn;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -15,19 +12,46 @@ import javax.persistence.TemporalType;
 @MappedSuperclass
 public abstract class GenericColumns {
 	
-	@Column(length=500)
+	@Column(length=500,nullable = false)
 	private String createdByUser;
-	@Column(length=500)
+	@Column(length=500, nullable = false)
 	private String updatedByUser;
 	@Temporal(TemporalType.TIMESTAMP)
+	@Column(nullable = false)
 	private Date createdDate;
 	@Temporal(TemporalType.TIMESTAMP)
+	@Column(nullable = false)
 	private Date updatedDate;
-	@Column(length = 2)
+	@Column(length = 2, nullable = false)
 	private String is_deleted;
+	@Column(nullable = false, columnDefinition = "BINARY (16)")
+	private UUID guid = UUID.randomUUID();
 	
 	
-	
+	public UUID getGuid() {
+		return guid;
+	}
+
+
+
+
+
+
+
+
+
+	public void setGuid(UUID guid) {
+		this.guid = guid;
+	}
+
+
+
+
+
+
+
+
+
 	public GenericColumns() {
 		//super();
 	}

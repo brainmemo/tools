@@ -5,4 +5,4 @@
  * @author sahayk1
  *
  */
-package com.framework.entities.tabs;
+package com.framework.tabs.entities;

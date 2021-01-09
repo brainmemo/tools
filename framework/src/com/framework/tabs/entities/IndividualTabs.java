@@ -1,4 +1,4 @@
-package com.framework.entities.tabs;
+package com.framework.tabs.entities;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -10,6 +10,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToOne;
 @Entity
@@ -20,16 +21,18 @@ public class IndividualTabs extends GenericColumns implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue (strategy = GenerationType.IDENTITY)
 	private Long tabid;
 	
+		
 	@Column(nullable = false, length = 50)
 	private String tabDisplayName;
+	
 	@Column(length = 500, nullable = false)
 	private String tabAction;
 	
-	
-	@OneToOne
+	@OneToOne 
+	@JoinColumn(name = "template", referencedColumnName = "template_id", nullable = false)
 	private Template tempalte;
 	
 	@ManyToMany(mappedBy = "tabs", cascade = CascadeType.ALL)
@@ -37,6 +40,12 @@ public class IndividualTabs extends GenericColumns implements Serializable {
 	 
 	
 	
+	public void setTabid(Long tabid) {
+		this.tabid = tabid;
+	}
+	public Long getTabid() {
+		return tabid;
+	}
 	
 	
 	public String getTabAction() {
@@ -60,18 +69,15 @@ public class IndividualTabs extends GenericColumns implements Serializable {
 	public IndividualTabs() {
 		//super();
 	}
-	public Long getTabid() {
-		return tabid;
-	}
-	public void setTabid(Long tabid) {
-		this.tabid = tabid;
-	}
+	
 	public String getTabDisplayName() {
 		return tabDisplayName;
 	}
 	public void setTabDisplayName(String tabDisplayName) {
 		this.tabDisplayName = tabDisplayName;
 	}
+	
+	
 	
 	
 }

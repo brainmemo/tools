@@ -1,4 +1,4 @@
-package com.framework.entities.tabs;
+package com.framework.tabs.entities;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -9,7 +9,6 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
@@ -24,7 +23,7 @@ public class TabLayout extends GenericColumns implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue 
 	private Long layoutid;
 	
 	@Column(nullable = false, length = 250)
@@ -34,18 +33,27 @@ public class TabLayout extends GenericColumns implements Serializable {
 	@JoinTable(name="Layout_Tab_Details")
 	private List<IndividualTabs> tabs= new ArrayList<IndividualTabs>();
 	
-	@OneToOne(fetch = FetchType.EAGER)
+	@OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true)
 	private TabLayout assocLayout;
 	private boolean isGroup=false;
-	@OneToOne
+	@OneToOne (optional = false)
 	private Template template;
 	
 	
 	
 	 
+	public Template getTemplate() {
+		return template;
+	}
+	public void setTemplate(Template template) {
+		this.template = template;
+	}
 	public TabLayout() {
 		//super();
 	}
+	
+	
+	
 	public Long getLayoutid() {
 		return layoutid;
 	}

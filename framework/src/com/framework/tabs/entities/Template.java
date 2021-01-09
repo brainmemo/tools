@@ -1,4 +1,4 @@
-package com.framework.entities.tabs;
+package com.framework.tabs.entities;
 
 import java.io.Serializable;
 
@@ -20,8 +20,9 @@ public class Template extends GenericColumns implements Serializable{
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long template_id;
 	
+		
 	@Column(nullable = false, length = 50)
-	private String template;
+	private String template_name;
 	
 	@Column(length = 500)
 	private String template_desc;
@@ -29,8 +30,22 @@ public class Template extends GenericColumns implements Serializable{
 	
 	
 	
+	public String getTemplate_name() {
+		return template_name;
+	}
+	public void setTemplate_name(String template_name) {
+		this.template_name = template_name;
+	}
+	public static long getSerialversionuid() {
+		return serialVersionUID;
+	}
 	public Template() {
 		//super();
+	}
+	
+	
+	public String getTemplate_desc() {
+		return template_desc;
 	}
 	public Long getTemplate_id() {
 		return template_id;
@@ -38,18 +53,10 @@ public class Template extends GenericColumns implements Serializable{
 	public void setTemplate_id(Long template_id) {
 		this.template_id = template_id;
 	}
-	public String getTemplate() {
-		return template;
-	}
-	public void setTemplate(String template) {
-		this.template = template;
-	}
-	public String getTemplate_desc() {
-		return template_desc;
-	}
 	public void setTemplate_desc(String template_desc) {
 		this.template_desc = template_desc;
 	}
+	
 	
 	
 

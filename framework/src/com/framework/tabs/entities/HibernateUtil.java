@@ -1,4 +1,4 @@
-package com.framework.entities.tabs;
+package com.framework.tabs.entities;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.Metadata;
 import org.hibernate.boot.MetadataSources;
