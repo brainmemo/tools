@@ -26,25 +26,30 @@
   
   <div class="container-scroller">
   
-  	<jsp:include page="partials/_sidebar.jsp"></jsp:include>
-  	<jsp:include page="partials/_navbar.jsp"></jsp:include>
+  	<jsp:include page=".././partials/_sidebar.jsp"></jsp:include>
+  	<jsp:include page=".././partials/_navbar.jsp"></jsp:include>
   	
   	 <div class="main-panel">
           <div class="content-wrapper pb-0">
    <!-- Below Code should be commented if you dont wnat to show Header ribbon -->
-          <jsp:include page="./partials/_ribbon.jsp"></jsp:include>
+          <jsp:include page=".././partials/_ribbon.jsp"></jsp:include>
                    <!-- YOUR CODE GOES HERE IN ROWS AND COLUMNS with width 4,6,8,12 -->
             <div class="row">
-              <div class="col-xl-8 grid-margin stretch-card">
-                 <!-- Column 1 -->
-				Column 1
-				  
+              <div class="col-lg-6 grid-margin stretch-card">
+                <div class="card">
+                  <div class="card-body">
+                    <h4 class="card-title">Line chart</h4>
+                    <canvas id="lineChart" style="height: 250px;"></canvas>
+                  </div>
+                </div>
               </div>
-			  <div class="row">
-              <div class="col-xl-4 grid-margin stretch-card">
-                 <!-- Column 1 -->
-				 Column 2
-				  
+              <div class="col-lg-6 grid-margin stretch-card">
+                <div class="card">
+                  <div class="card-body">
+                    <h4 class="card-title">Bar chart</h4>
+                    <canvas id="barChart" style="height: 230px;"></canvas>
+                  </div>
+                </div>
               </div>
               
 			 
@@ -55,8 +60,8 @@
   	
   	
   	
-  	</div>
-    <jsp:include page="partials/_footer.jsp"></jsp:include> 
+  	
+    <jsp:include page=".././partials/_footer.jsp"></jsp:include> 
   	   
   
    
