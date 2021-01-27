@@ -32,4 +32,11 @@
         <load-on-startup>2</load-on-startup>
     </servlet>
    
+   <jsp-config>
+  <taglib>
+  	<taglib-uri>http://yettolaunch.com/tlds</taglib-uri>
+  	<taglib-location>/WEB-INF/dashboard.tld</taglib-location>
+  </taglib>
+  </jsp-config>
+   
 </web-app>

@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
  <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://yettolaunch.com/tlds" prefix="mytags"%>
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -16,6 +18,9 @@
     <link rel="stylesheet" href="<c:url value="/resources/assets/vendors/bootstrap-datepicker/bootstrap-datepicker.min.css" />"/>
     <link rel="stylesheet" href="<c:url value="/resources/assets/css/style.css" />"/>
     <link rel="shortcut icon" href="<c:url value="/resources/assets/images/favicon.png" />"/>
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-1.10.23/datatables.min.css"/>
+ 
+
    
   </head>
   
@@ -26,7 +31,7 @@
   
   <div class="container-scroller">
   
-  	<jsp:include page=".././partials/_sidebar.jsp"></jsp:include>
+  	<%-- <jsp:include page=".././partials/_sidebar.jsp"></jsp:include> --%>
   	<jsp:include page=".././partials/_navbar.jsp"></jsp:include>
   	
   	 <div class="main-panel">
@@ -38,7 +43,15 @@
               <div class="col-lg-6 grid-margin stretch-card">
                 <div class="card">
                   <div class="card-body">
-                    <h4 class="card-title">Line chart</h4>
+                    <h4 class="card-title">Line chart
+                    <mytags:dashboard   dashboard_id="abc" table_class="table table-striped "/> 
+						 <select class="selectpicker" data-live-search="true">
+						  <option data-tokens="ketchup mustard">Hot Dog, Fries and a Soda</option>
+						  <option data-tokens="mustard">Burger, Shake and a Smile</option>
+						  <option data-tokens="frosting">Sugar, Spice and all things nice</option>
+						</select>
+                    
+                    </h4>
                     <canvas id="lineChart" style="height: 250px;"></canvas>
                   </div>
                 </div>
@@ -46,8 +59,52 @@
               <div class="col-lg-6 grid-margin stretch-card">
                 <div class="card">
                   <div class="card-body">
-                    <h4 class="card-title">Bar chart</h4>
-                    <canvas id="barChart" style="height: 230px;"></canvas>
+                    <h4 class="card-title">Bar chart  </h4>
+                    <div>
+                    	<table id="country1" class="table table-responsive-lg ">
+                    	<thead>
+                    	<tr>
+                    			<th>Sno</th>
+                    			<th>Country</th>
+                    			<th>State</th>
+                    			<th>Capital</th>
+                    			<th>Comments</th>
+                    			<th>Comments_1</th>
+                    	</tr>
+                    	</thead>
+                    	<tbody>
+                    	<tr>
+                    		<td>1</td>
+                    		<td>India</td>
+                    		<td>Maharasthra</td>
+                    		<td>Mumbai</td>
+                    		<td>Financial Capital</td>
+                    		<td></td>
+                    	</tr>
+                    	<tr>
+                    		<td>2</td>
+                    		<td>India</td>
+                    		<td>Bihar</td>
+                    		<td>Patna</td>
+                    		<td>Golghar</td>
+                    		<td></td>
+                    	</tr>
+                    	<tr>
+                    		<td>1</td>
+                    		<td>India</td>
+                    		<td>Maharasthra</td>
+                    		<td>Mumbai</td>
+                    		<td>Financial Capital</td>
+                    		<td></td>
+                    	</tr>
+                    	
+                    	</tbody>
+                    	</table>
+                    </div>
+                   
+                    <canvas id="barChart" style="height: 230px;">
+                    
+                    </canvas>
                   </div>
                 </div>
               </div>
@@ -70,7 +127,50 @@
    
  <!-- plugins:js -->
     <script src="<c:url value="/resources/assets/vendors/js/vendor.bundle.base.js"/>"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/v/dt/dt-1.10.23/datatables.min.js"></script>
     <!-- endinject -->
+
+<script>
+var render=0;
+var statuslist = [{'id': '1', 'state': 'Maharasthra'}, {'id': '2', 'state': 'Bihar'}];
+$(document).ready(function() {
+    $('#country1').DataTable( {
+    	
+        "columnDefs": [
+           
+        	
+            {"targets": [ 0], 
+            	"visible": true,
+            	"width": "20%",
+            	 
+            },
+          
+            {
+            	"targets": 2, 
+            	"visible": true ,
+            	"width": "20%",
+            	"render": function(data, type, row, meta){
+                    var $select = $('<select/>', { 'class': 'ctrl-status' });
+                    $.each(statuslist, function (Value, Text) {
+                       var $opt = $('<option/>', { 'value': Text.id, 'text': Text.state });
+                      
+                       if (Text.state === row[2]){
+                    	   console.log('Full [0] ' + row[2] + ' State '+ Text.state);
+                    	   $opt.attr("selected", "selected");
+                       }
+                       $select.append($opt);
+                    });
+                    return $select.prop("outerHTML");
+                 }
+
+            }
+        ]
+    } );
+} );
+    
+    </script>
+<mytags:dashEnd dashboard_id="abc"/>
+ 	
     <!-- Plugin js for this page -->
     <script src="<c:url value="/resources/assets/vendors/chart.js/Chart.min.js"/>"></script>
     <script src="<c:url value="/resources/assets/vendors/bootstrap-datepicker/bootstrap-datepicker.min.js"/>"></script>

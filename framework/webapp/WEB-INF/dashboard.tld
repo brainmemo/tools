@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<taglib xmlns="https://java.sun.com/xml/ns/j2ee"
+    xmlns:xsi="https://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="https://java.sun.com/xml/ns/j2ee https://java.sun.com/xml/ns/j2ee/web-jsptaglibrary_2_0.xsd"
+    version="2.0">
+<description>Number Formatter Custom Tag</description>
+<tlib-version>2.1</tlib-version>
+<short-name>mytags</short-name>
+<uri>http://yettolaunch.com/tlds</uri>
+<tag>
+	<name>dashboard</name>
+	<tag-class>com.framework.dashboards.taghandlers.DashboardTag</tag-class>
+	<body-content>empty</body-content>
+	<attribute>
+	<name>dashboard_id</name>
+	<required>true</required>
+	</attribute>
+	<attribute>
+	<name>role_cd</name>
+	<required>false</required>
+	</attribute>
+		 
+	
+	<attribute>
+	<name>table_class</name>
+	<required>true</required>
+	</attribute>
+	
+	<attribute>
+	<name>row_class</name>
+	<required>false</required>
+	</attribute>
+	
+	<attribute>
+	<name>column_class</name>
+	<required>false</required>
+	</attribute>
+	
+	<attribute>
+	<name>header_row_class</name>
+	<required>false</required>
+	</attribute>
+	
+	<attribute>
+	<name>header_col_class</name>
+	<required>false</required>
+	</attribute>
+	
+</tag>
+<tag>
+	<name>dashEnd</name>
+	<tag-class>com.framework.dashboards.taghandlers.DashboardEndTag</tag-class>
+	<body-content>empty</body-content>
+	<attribute>
+	<name>dashboard_id</name>
+	<required>true</required>
+	</attribute>
+	
+</tag>
+</taglib>
