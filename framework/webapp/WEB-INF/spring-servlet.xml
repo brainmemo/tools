@@ -5,6 +5,7 @@
     xmlns:context="http://www.springframework.org/schema/context"
     xmlns:tx="http://www.springframework.org/schema/tx"
     xmlns:mvc="http://www.springframework.org/schema/mvc"
+    xmlns:jpa="http://www.springframework.org/schema/data/jpa"
  xsi:schemaLocation="
   http://www.springframework.org/schema/beans
   http://www.springframework.org/schema/beans/spring-beans.xsd
@@ -13,9 +14,13 @@
   http://www.springframework.org/schema/mvc
   http://www.springframework.org/schema/mvc/spring-mvc.xsd
   http://www.springframework.org/schema/tx 
-  http://www.springframework.org/schema/tx/spring-tx.xsd">
+  http://www.springframework.org/schema/tx/spring-tx.xsd
+  http://www.springframework.org/schema/data/jpa 
+  http://www.springframework.org/schema/data/jpa/spring-jpa.xsd">
     <!-- Add support for component scanning -->
+  	<jpa:repositories base-package="com.framework.tabs.entities"/>
     <context:component-scan base-package="com.framework.tabs" />
+  
     <!-- Add support for conversion, formatting and validation support -->
     <mvc:annotation-driven/>
     <!-- Define Spring MVC view resolver -->
@@ -41,7 +46,7 @@
   
     <!-- Step 2: Setup Hibernate session factory -->
     <bean id="sessionFactory"
-  class="org.springframework.orm.hibernate5.LocalSessionFactoryBean">
+  	class="org.springframework.orm.hibernate5.LocalSessionFactoryBean">
         <property name="dataSource" ref="myDataSource" />
         <property name="packagesToScan" value="com.framework.tabs.entities" />
         <property name="hibernateProperties">
@@ -52,7 +57,37 @@
             </props>
         </property>
     </bean>
+  <!-- Create default configuration for Hibernate -->
+  <bean id="hibernateJpaVendorAdapter" 
+    class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter"/>
+    
+   <!-- Configure the entity manager factory bean -->
+  <bean id="entityManagerFactory" 
+    class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+    <property name="dataSource" ref="myDataSource"/>
+    <property name="jpaVendorAdapter" ref="hibernateJpaVendorAdapter"/>
+    <!-- Set JPA properties -->
+    <property name="jpaProperties">
+      <props>
+        <prop key="hibernate.dialect">org.hibernate.dialect.MySQL8Dialect</prop>
+        <prop key="javax.persistence.schema-generation.database.action">none</prop>
+        <prop key="hibernate.ejb.use_class_enhancer">true</prop>
+      </props>
+    </property>
+    <!-- Set base package of your entities -->
+    <property name="packagesToScan" value="com.framework.tabs.entities"/>
+    <!-- Set share cache mode -->
+    <property name="sharedCacheMode" value="ENABLE_SELECTIVE"/>
+    <!-- Set validation mode -->
+    <property name="validationMode" value="NONE"/>
+  </bean>
   
+  <!-- Configure the transaction manager bean -->
+  <bean id="transactionManager" 
+    class="org.springframework.orm.jpa.JpaTransactionManager">
+    <property name="entityManagerFactory" ref="entityManagerFactory"/>
+  </bean>
+
   
      <!-- Add support for reading web resources: css, images, js, etc ... -->
     <mvc:resources location="/WEB-INF/resources/" mapping="/resources/**"></mvc:resources>

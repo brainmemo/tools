@@ -13,7 +13,10 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToOne;
+
+import lombok.Data;
 @Entity
+@Data
 public class IndividualTabs extends GenericColumns implements Serializable {
 	/**
 	 * 
@@ -28,8 +31,6 @@ public class IndividualTabs extends GenericColumns implements Serializable {
 	@Column(nullable = false, length = 50)
 	private String tabDisplayName;
 	
-	@Column(length = 500, nullable = false)
-	private String tabAction;
 	
 	@OneToOne 
 	@JoinColumn(name = "template", referencedColumnName = "template_id", nullable = false)
@@ -38,46 +39,10 @@ public class IndividualTabs extends GenericColumns implements Serializable {
 	@ManyToMany(mappedBy = "tabs", cascade = CascadeType.ALL)
 	private List<TabLayout> layout = new ArrayList<TabLayout>();
 	 
-	
-	
-	public void setTabid(Long tabid) {
-		this.tabid = tabid;
-	}
-	public Long getTabid() {
-		return tabid;
-	}
-	
-	
-	public String getTabAction() {
-		return tabAction;
-	}
-	public void setTabAction(String tabAction) {
-		this.tabAction = tabAction;
-	}
-	public Template getTempalte() {
-		return tempalte;
-	}
-	public void setTempalte(Template tempalte) {
-		this.tempalte = tempalte;
-	}
-	public List<TabLayout> getLayout() {
-		return layout;
-	}
-	public void setLayout(List<TabLayout> layout) {
-		this.layout = layout;
-	}
-	public IndividualTabs() {
-		//super();
-	}
-	
-	public String getTabDisplayName() {
-		return tabDisplayName;
-	}
-	public void setTabDisplayName(String tabDisplayName) {
-		this.tabDisplayName = tabDisplayName;
-	}
-	
-	
+	@OneToOne 
+	@JoinColumn(name = "page", referencedColumnName = "page_cd", nullable = false)
+	private Pages page;
+		
 	
 	
 }

@@ -8,26 +8,62 @@ import javax.persistence.MappedSuperclass;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 
 @MappedSuperclass
 public abstract class GenericColumns {
-	
+	@JsonIgnore
 	@Column(length=500,nullable = false)
 	private String createdByUser;
+	@JsonIgnore
 	@Column(length=500, nullable = false)
 	private String updatedByUser;
+	@JsonIgnore
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(nullable = false)
 	private Date createdDate;
+	@JsonIgnore
 	@Temporal(TemporalType.TIMESTAMP)
 	@Column(nullable = false)
 	private Date updatedDate;
 	@Column(length = 2, nullable = false)
+	@JsonIgnore
 	private String is_deleted;
+	@JsonIgnore
 	@Column(nullable = false, columnDefinition = "BINARY (16)")
 	private UUID guid = UUID.randomUUID();
 	
 	
+	
+
+
+
+
+
+
+
+
+
+	public GenericColumns(String createdByUser, String updatedByUser, Date createdDate, Date updatedDate,
+			String is_deleted, UUID guid) {
+		super();
+		this.createdByUser = createdByUser;
+		this.updatedByUser = updatedByUser;
+		this.createdDate = createdDate;
+		this.updatedDate = updatedDate;
+		this.is_deleted = is_deleted;
+		this.guid = guid;
+	}
+
+
+
+
+
+
+
+
+
 	public UUID getGuid() {
 		return guid;
 	}

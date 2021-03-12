@@ -49,10 +49,10 @@ public class TestEntities {
 				  IndividualTabs tab = new IndividualTabs(); tab.setCreatedByUser("admin");
 				  tab.setCreatedDate(timestamp); tab.setIs_deleted("N");
 				  tab.setUpdatedDate(timestamp); tab.setUpdatedByUser("admin");
-				  tab.setTabDisplayName("Dashboard "); tab.setTabAction("Page 1");
-				  tab.setTempalte(template); 
+				  //tab.setTabDisplayName("Dashboard "); tab.setTabAction("Page 1");
+				  //tab.setTempalte(template); 
 				  session.save(tab);
-				  System.out.println("Tab ID XXXXXXXXXXXXXXXXXXXXXXXXX " + tab.getTabid());
+				  //System.out.println("Tab ID XXXXXXXXXXXXXXXXXXXXXXXXX " + tab.getTabid());
 				  lstTab.add(tab); 
 				  }
 				  
@@ -88,7 +88,7 @@ public class TestEntities {
 				  
 				  IndividualTabs individualTabs = (IndividualTabs) iterator.next();
 				  
-				  System.out.println("Value of Tab ::" + individualTabs.getTabAction());
+				//  System.out.println("Value of Tab ::" + individualTabs.getTabAction());
 				  
 				  }
 				  
@@ -99,8 +99,8 @@ public class TestEntities {
 				  iterator.hasNext();) { IndividualTabs individualTabs = (IndividualTabs)
 				  iterator.next();
 				  
-				  System.out.println("Value of Child Tab =====================> " +
-				  individualTabs.getTabAction() +" === "+ individualTabs.getTabid()); 
+				  //System.out.println("Value of Child Tab =====================> " +
+				  //individualTabs.getTabAction() +" === "+ individualTabs.getTabid()); 
 				  
 				  }
 				 

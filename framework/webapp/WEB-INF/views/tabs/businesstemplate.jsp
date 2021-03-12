@@ -32,13 +32,13 @@
   <div class="container-scroller">
   
   	<%-- <jsp:include page=".././partials/_sidebar.jsp"></jsp:include> --%>
-  	<jsp:include page=".././partials/_navbar.jsp"></jsp:include>
-  	
+  	<%-- <jsp:include page=".././partials/_navbar.jsp"></jsp:include>
+  	 --%>
   	 <div class="main-panel">
           <div class="content-wrapper pb-0">
    <!-- Below Code should be commented if you dont wnat to show Header ribbon -->
-          <jsp:include page=".././partials/_ribbon.jsp"></jsp:include>
-                   <!-- YOUR CODE GOES HERE IN ROWS AND COLUMNS with width 4,6,8,12 -->
+ <%--          <jsp:include page=".././partials/_ribbon.jsp"></jsp:include>
+  --%>                  <!-- YOUR CODE GOES HERE IN ROWS AND COLUMNS with width 4,6,8,12 -->
             <div class="row">
               <div class="col-lg-6 grid-margin stretch-card">
                 <div class="card">
@@ -118,8 +118,8 @@
   	
   	
   	
-    <jsp:include page=".././partials/_footer.jsp"></jsp:include> 
-  	   
+    <%-- <jsp:include page=".././partials/_footer.jsp"></jsp:include> 
+  	 --%>   
   
    
   
@@ -134,7 +134,7 @@
 var render=0;
 var statuslist = [{'id': '1', 'state': 'Maharasthra'}, {'id': '2', 'state': 'Bihar'}];
 $(document).ready(function() {
-    $('#country1').DataTable( {
+    var table=$('#country1').DataTable( {
     	
         "columnDefs": [
            
@@ -166,6 +166,15 @@ $(document).ready(function() {
             }
         ]
     } );
+
+    $('.dataTable').on('focus', 'tbody td', function() {
+
+    	  //get textContent of the TD
+    	  console.log('TD cell textContent : ', this.textContent)
+
+    	  //get the value of the TD using the API 
+    	  console.log('value by API : ', table.cell({ row: this.parentNode.rowIndex, column : this.cellIndex }).data());
+    });
 } );
     
     </script>

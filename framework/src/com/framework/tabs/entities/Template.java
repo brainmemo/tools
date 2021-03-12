@@ -7,6 +7,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 
 @Entity
 public class Template extends GenericColumns implements Serializable{
@@ -16,6 +18,7 @@ public class Template extends GenericColumns implements Serializable{
 	 */
 	private static final long serialVersionUID = 1L;
 
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long template_id;
@@ -27,7 +30,24 @@ public class Template extends GenericColumns implements Serializable{
 	@Column(length = 500)
 	private String template_desc;
 	
+	public BusinessGroups getParentGroup() {
+		return parentGroup;
+	}
+
+
+	public void setParentGroup(BusinessGroups parentGroup) {
+		this.parentGroup = parentGroup;
+	}
+	@OneToOne
+	@JoinColumn(name = "groupID", referencedColumnName="groupID")
+	private BusinessGroups parentGroup;
 	
+	public Template(Long template_id, String template_name, String template_desc) {
+		super();
+		this.template_id = template_id;
+		this.template_name = template_name;
+		this.template_desc = template_desc;
+	}
 	
 	
 	public String getTemplate_name() {

@@ -1,0 +1,50 @@
+body {
+    background-color: #fcfcfc;
+}
+
+#sidenav {
+    background: #eeeeee;
+    border-right: #e4e4e4 solid 1px;
+}
+
+.navbar {
+    background-color: #eeeeee !important;
+    border-bottom: #e4e4e4 solid 1px;
+}
+
+.nav-link, .nav-link:focus {
+    color: #656565 !important;
+}
+
+.btn-nav {
+    background-color: #dcdcdc;
+    color: #656565;
+}
+
+.btn-nav:hover {
+    color: #383838;
+}
+
+.search-input {
+    background-color: #dcdcdc;
+}
+
+.search-input::placeholder {
+    color: #656565;
+}
+
+.nav-search {
+    background-color: #d4d4d4;
+}
+
+#floating-menu {
+    background-color: #c2c2c2;
+}
+
+#sidenav a {
+    color: #656565;
+}
+
+.side-icon {
+    color: #656565;
+}
