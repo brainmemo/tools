@@ -15,7 +15,9 @@ import javax.persistence.ManyToMany;
 import javax.persistence.OneToOne;
 
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 @Entity
+@EqualsAndHashCode(callSuper=false)
 @Data
 public class IndividualTabs extends GenericColumns implements Serializable {
 	/**

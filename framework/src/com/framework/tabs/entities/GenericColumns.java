@@ -14,6 +14,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 @MappedSuperclass
 public abstract class GenericColumns {
 	@JsonIgnore
+	
 	@Column(length=500,nullable = false)
 	private String createdByUser;
 	@JsonIgnore

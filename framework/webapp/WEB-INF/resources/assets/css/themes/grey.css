@@ -1,0 +1,25 @@
+body {
+    background-color: #f4f4f9;
+    color: #010101;
+}
+
+#sidenav {
+    background: #39393e;
+    color: #bfbcc6;
+}
+
+.nav-link, .nav-link:focus {
+    color: #0c0c0c;
+}
+
+#sidenav a {
+    color: #d4d4d4;
+}
+
+.side-icon {
+    color: #d4d4d4;
+}
+
+a:hover, .this-page {
+    color: #37cc41 !important;
+}

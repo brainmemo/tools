@@ -23,7 +23,6 @@
     <link rel="stylesheet" href="./resources/assets/css/lib/select2.min.css">
     <link rel="stylesheet" href="./resources/assets/css/lib/data-tables.min.css">
     <link rel="stylesheet" href="./resources/assets/css/lib/bootstrap-datepicker.min.css">
-     <link rel="stylesheet" href="./resources/assets/css/lib/jstree/jstree.min.css">
     <link rel="stylesheet" href="./resources/assets/css/custom.css">
     <link rel="stylesheet" href="./resources/assets/css/pages/features.css">
 </head>
@@ -33,8 +32,8 @@
 <jsp:include page=".././partials/sidenav.jsp"></jsp:include>
 
 <div id="content" class="can_have_sidenav">
-   <!--  <div class="p-5"> -->
-      <!--   <div class="row mb-3">
+    <div class="p-5">
+        <div class="row mb-3">
             <div class="col-lg-4">
                 <h3>
                     Hi, Welcome back!
@@ -48,29 +47,20 @@
                     Add User
                 </a>
             </div>
-        </div> -->
-    <div class="row mb-3">
-    <div class="col-lg-4">
+        </div>
+
         <div class="card">
             <div class="card-body p-4">
-            <input type="text" id="jstree_search" class="form-control mb-3" placeholder="Enter your keyword">
-                <div id="jstree_div"></div>
-            </div>
-         </div>
-    </div>
-  <div class="col-lg-8">
-        <div class="card">
-            <div class="card-body p-4">
-                <h5 class="mb-3">Templates</h5>
+                <h5 class="mb-3">Purchase History</h5>
 
                 <table class="display dataTable-table">
                     <thead>
                     <tr>
                         <th>#</th>
-                        <th>Group</th>
-                        <th>Name</th>
-                        <th>Description</th>
-                         <th>Template</th>
+                        <th>Country</th>
+                        <th>State</th>
+                        <th>Capital</th>
+                        <th>Comments</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -79,22 +69,22 @@
                         <td></td>
                         <td></td>
                         <td>NYC</td>
-                        <td></td>
+                        <td>Financial Capital</td>
                     </tr>
                     <tr>
                         <td>2</td>
                         <td></td>
                         <td></td>
                         <td>Chicago</td>
-                      <td></td>
+                        <td></td>
                     </tr>
                     </tbody>
                 </table>
             </div>
         </div>
-</div>
-</div>
-    <!--     <div class="card mt-4">
+
+
+        <div class="card mt-4">
             <div class="card-body p-4">
                 <h5 class="mb-3">Business Survay</h5>
 
@@ -107,7 +97,7 @@
             </div>
         </div>
 
-         <div class="card mt-4">
+        <div class="card mt-4">
             <div class="card-body p-4">
                 <h5>Change color scheme</h5>
 
@@ -127,11 +117,10 @@
                 </div>
             </div>
         </div>
-   </div> -->
+    </div>
 </div>
- <form action="">
+
 <div class="modal" id="addModal" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false">
-   
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header">
@@ -151,10 +140,9 @@
                 <button type="button" class="btn btn-primary" onclick="submitAddOption()">Save changes</button>
             </div>
         </div>
-      
     </div>
 </div>
-  </form>
+
 <jsp:include page=".././partials/floating-menu.jsp"></jsp:include>
 <jsp:include page=".././partials/footer.jsp"></jsp:include>
 
@@ -164,10 +152,8 @@
 <script src="./resources/assets/js/lib/select2.min.js"></script>
 <script src="./resources/assets/js/lib/data-tables.min.js"></script>
 <script src="./resources/assets/js/lib/key-table.min.js"></script>
-<script src="./resources/assets/js/lib/jstree.min.js"></script>
 <script src="./resources/assets/js/lib/bootstrap-datepicker.min.js"></script>
 <script src="./resources/assets/js/custom.js"></script>
-<script src="./resources/assets/js/pages/template.js"></script>
-<script src="./resources/assets/js/pages/directory.js"></script>
+<script src="./resources/assets/js/pages/features.js"></script>
 </body>
 </html>

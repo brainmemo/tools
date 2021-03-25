@@ -1,3 +1,7 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+    pageEncoding="ISO-8859-1"%>
+ <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://yettolaunch.com/tlds" prefix="mytags"%>
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark text-light can_have_sidenav">
     <div class="container-fluid navbar-nav">
         <div class="row w-100">
@@ -48,7 +52,7 @@
                 <li class="nav-item dropdown d-inline-block ms-4 mobile-nav-3">
                     <a class="nav-link dropdown-toggle p-0" href="#" id="navbarDropdown" role="button"
                        data-bs-toggle="dropdown" aria-expanded="false">
-                        <img src="./assets/images/avatar.png" class="me-lg-2 profile-img" width="40">
+                        <img src="<c:url value="/resources/assets/images/avatar.png"/>" class="me-lg-2 profile-img" width="40">
                         <span class="d-none d-lg-inline-block">Henry Klein</span>
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
@@ -62,7 +66,7 @@
                 </li>
 
                 <a href="#" class="d-lg-none float-end mobile-nav-4">
-                    <img src="./assets/images/logo.png" width="40" class="ms-3">
+                    <img src="./resources/assets/images/logo.png" width="40" class="ms-3">
                 </a>
             </div>
         </div>

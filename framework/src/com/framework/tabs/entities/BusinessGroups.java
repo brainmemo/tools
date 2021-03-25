@@ -9,8 +9,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 
-import org.hibernate.annotations.LazyCollection;
-
 import com.google.gson.annotations.Expose;
 
 @Entity
@@ -26,10 +24,9 @@ public class BusinessGroups extends GenericColumns {
 	@Expose
 	@Column(length = 500, nullable = false)
 	private String groupDescription;
-	
+	@Expose
 	@OneToOne(fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST})
 	private BusinessGroups groupParent;
-	@Expose
 	@Column()
 	private boolean isGroup=false;
 	

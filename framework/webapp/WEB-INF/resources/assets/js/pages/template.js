@@ -1,8 +1,10 @@
+  
 //////////////////////////////////////////////////
 /////       For Loading Datatables    ////////////
 //////////////////////////////////////////////////
 var new_select, select2_element, select2_new_data_tag = null;
-
+var currentRow=0; 
+var previousRow=-1;
 var table = $('.dataTable-table').DataTable({
     responsive: true,
     keys: true,
@@ -10,28 +12,57 @@ var table = $('.dataTable-table').DataTable({
     scrollY: "25vh",
     paging: false,
     scrollCollapse: true,
+      "ajax": {url:"./template/db", dataSrc:""},
+       "columns": [
+            { 
+            "width": "0.5%", 
+             "target":0,
+             "render": function (data, type, full, meta  ) {
+                            return '<input type="checkbox" class="form-check-input" id = chk' + meta.row + '>';
+                        },
+                "defaultContent" : ""        
+              },
+            { "data": "groupParent.groupName",
+              "defaultContent" : "<i>Not set</i>"},
+            { "data": "groupName",
+            "defaultContent" : "<i>Not set</i>" },
+            { "data": "groupDescription",
+            "defaultContent" : "<i>Not set</i>" },
+          { "data": "isGroup",
+            "defaultContent" : "<i>Not set</i>" },
+          
+        ],
 }).on('key-focus', function (e, datatable, cell, originalEvent) {
+
+if (cell.index().row != currentRow){
+	previousRow = currentRow;
+	currentRow = cell.index().row;
+}
+console.log('Previous row ' + previousRow );
+console.log('Current row ' + currentRow );
     if ((table.rows().count() - 1) == cell.index().row) {
-        table.row.add([table.rows().count() + 1, "", "", "", "", ""]).draw();
+        table.row.add([table.rows().count() + 1, "", "", "", ""]).draw();
     }
-
-    if (cell.index().column == 0) {
-        table.keys.move('right');
-        return;
-    }
-
-    if (cell.index().column == 1 || cell.index().column == 2) {
-        new_select = $('<select></select>');
-        $('.focus').html(new_select);
-        enableSelectForCol();
-    } else {
-        $('.focus > input').focus();
-
-        if ($('.focus > select').length == 0 && $('.focus > input').length == 0) {
-            $('.focus').html('<input class="editable" style="width:100%;" type="text" value="' + $('.focus').text() + '">');
+ switch(cell.index().column)
+ {
+ 	case 0:  
+ 			  $('#chk'+cell.index().row).focus();
+        	break;
+ 	case 1:	{
+ 			let new_option = $('<option></option>').html($('.focus').html());
+           	new_select = $('<select></select>').html(new_option);
+        	$('.focus').html(new_select);
+	        enableSelectForCol();
+ 			break;
+ 			
+ 			}
+		default:{
+		  $('.focus').html('<input class="editable" type="text" value="' + $('.focus').text() + '">');
             $('.editable').focus();
-        }
+            break;}
+
     }
+        
 });
 
 $('.dataTable-table').on('keypress', '.editable', function (event) {
@@ -46,6 +77,15 @@ $('.dataTable-table').on('keypress', '.editable', function (event) {
     let value = $(this).val();
     $(cell).html(value);
     table.cell(cell).data(value)
+});
+
+$('.dataTable-table').on('keypress', '.form-check-input', function (event) {
+    if (event.keyCode == 13) {
+       
+        table.keys.move('right');
+    }
+}).on('blur', '.form-check-input', function () {
+   
 });
 
 //////////////////////////////////////////////////
@@ -63,28 +103,21 @@ var select_options = {
     tags: true,
     selectOnClose: false,
     allowClear: true,
-    data: [
-        {
-            id: 0,
-            text: 'Japan'
-        },
-        {
-            id: 1,
-            text: 'Australia'
-        },
-        {
-            id: 2,
-            text: 'Russia'
-        },
-        {
-            id: 3,
-            text: 'Canada'
-        },
-        {
-            id: 4,
-            text: 'Georgia'
+    ajax: {
+        url: './template/group',
+        processResults: function (data) {
+            data = JSON.parse(data);
+
+            return {
+                results: data.map(group => {
+                    return {
+                        text: group.text,
+                        id: group.id
+                    };
+                })
+            };
         }
-    ],
+    },
     insertTag: function (data, tag) {
         $('.select2-found-text').remove();
 
@@ -107,7 +140,7 @@ var select_options = {
         params.term = params.term || '';
 
         if (data.text.toLowerCase().indexOf(params.term.toLowerCase()) == 0) {
-            if ($('.select2-found-text').length == 0) {
+            if (params.term != '' && $('.select2-found-text').length == 0) {
                 $('.select2-not-found-text').remove();
 
                 $('.select2-results').append('<div class="p-1 mb-1 select2-found-text"><hr class="mt-0 mb-1">' +

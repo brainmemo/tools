@@ -28,7 +28,7 @@ public class BusinessTemplateController {
 	@Autowired
 	private TemplateRepository template;
 	
-	@GetMapping("/template")
+	@GetMapping("/template/v1")
 	@ResponseBody
 	public List<BusinessGroups> getTemplate(@RequestParam("term") String term) {
 		
@@ -68,7 +68,7 @@ public class BusinessTemplateController {
 		
 		return lstGroups;
 	}
-	@GetMapping("/temp")
+	@GetMapping("/temp/v1")
 	public String getGroups() {
 		return "/tabs/templates";
 	}

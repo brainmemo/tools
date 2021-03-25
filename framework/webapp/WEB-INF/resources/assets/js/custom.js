@@ -80,9 +80,11 @@ function getCookie(name) {
 
 function changeColorScheme(color) {
     $('#theme-css-file').remove();
-    if (color == 'light' || color == 'dark') {
-        $('head').append('<link rel="stylesheet" href="./assets/css/' + color + '.css" type="text/css" id="theme-css-file" />');
-    }
+
+    if (color == 'default')
+        return;
+
+    $('head').append('<link rel="stylesheet" href="./resources/assets/css/themes/' + color + '.css" type="text/css" id="theme-css-file" />');
 }
 
 $('.btn-change-theme').click(function () {
