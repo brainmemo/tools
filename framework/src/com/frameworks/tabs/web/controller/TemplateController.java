@@ -1,4 +1,4 @@
-package com.framework.tabs.controller;
+package com.frameworks.tabs.web.controller;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -12,27 +12,24 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.framework.tabs.DTO.TemplateDTO;
-import com.framework.tabs.entities.BusinessGroups;
-import com.framework.tabs.entities.TemplateRepository;
-import com.framework.tabs.service.GenericNameID;
-import com.framework.tabs.service.Interface_template;
+import com.framework.tabs.persistence.model.BusinessGroups;
+import com.framework.tabs.service.IBusinessGroupService;
+import com.frameworks.tabs.web.DTO.GenericNameID;
+import com.frameworks.tabs.web.DTO.TemplateDTO;
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.jayway.jsonpath.DocumentContext;
 import com.jayway.jsonpath.JsonPath;
 @Controller
 public class TemplateController {
 	@Autowired
-	Interface_template templateRepo;
+	IBusinessGroupService templateRepo;
 	
 	@GetMapping("/template")
 	public ModelAndView getGroups() {
-	
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("/tabs/templates");
 		TemplateDTO tempDTO = new TemplateDTO();
-		
-		
 	    mv.addObject("tempDTO", tempDTO);
 		return mv;
 	}
@@ -50,9 +47,8 @@ public class TemplateController {
 	@GetMapping("/template/group")
 	@ResponseBody
 	public String getGroupdata(@RequestParam(name = "term", defaultValue ="", required = false ) String term){
-		Gson gson = new Gson();
 		
-		
+		Gson gson = new GsonBuilder().excludeFieldsWithoutExposeAnnotation().create();
 		List<GenericNameID> lstGroup = new ArrayList<GenericNameID>();
 		try {
 			lstGroup = templateRepo.getTemplateGroups();

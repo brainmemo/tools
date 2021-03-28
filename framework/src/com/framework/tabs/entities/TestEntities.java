@@ -9,6 +9,9 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 
+import com.framework.tabs.persistence.model.IndividualTabs;
+import com.framework.tabs.persistence.model.TabLayout;
+
 public class TestEntities {
 
 	public static void main(String[] args) {
@@ -31,13 +34,14 @@ public class TestEntities {
 				
 				session.clear();
 				System.out.println("Cache Mode --------------> " +session.getCacheMode());
-				  Template template = new Template(); template.setCreatedByUser("admin");
-				  template.setCreatedDate(timestamp); template.setIs_deleted("N");
-				  template.setUpdatedByUser("admin"); template.setUpdatedDate(timestamp);
-				  template.setTemplate_name("Development");
-				  template.setTemplate_desc("Template for Development/Configuration tools");
-				  session.save(template);
-				 
+				/*
+				 * Template template = new Template(); template.setCreatedByUser("admin");
+				 * template.setCreatedDate(timestamp); template.setIs_deleted("N");
+				 * template.setUpdatedByUser("admin"); template.setUpdatedDate(timestamp);
+				 * template.setTemplate_name("Development");
+				 * template.setTemplate_desc("Template for Development/Configuration tools");
+				 * session.save(template);
+				 */	 
 			
 					
 				
@@ -62,7 +66,7 @@ public class TestEntities {
 					  layout.setCreatedDate(timestamp); layout.setIs_deleted("N");
 					  layout.setUpdatedDate(timestamp); layout.setUpdatedByUser("admin");
 					  layout.setTabs(lstTab); layout.setLayoutName("child layout");
-					  layout.setTemplate(template); 
+					  //layout.setTemplate(template); 
 					  
 					  session.save(layout);
 					  

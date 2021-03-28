@@ -1,4 +1,4 @@
-package com.framework.tabs.entities;
+package com.framework.tabs.persistence.model;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -34,9 +34,9 @@ public class IndividualTabs extends GenericColumns implements Serializable {
 	private String tabDisplayName;
 	
 	
-	@OneToOne 
-	@JoinColumn(name = "template", referencedColumnName = "template_id", nullable = false)
-	private Template tempalte;
+	@OneToOne
+	@JoinColumn(name = "template", referencedColumnName = "groupID", nullable = false)
+	private BusinessGroups template;
 	
 	@ManyToMany(mappedBy = "tabs", cascade = CascadeType.ALL)
 	private List<TabLayout> layout = new ArrayList<TabLayout>();

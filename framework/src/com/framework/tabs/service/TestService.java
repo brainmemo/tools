@@ -5,6 +5,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 import javax.sql.DataSource;
 
 import com.google.gson.Gson;
@@ -13,7 +15,8 @@ public class TestService {
 	
 	private DataSource dataSource;
 
-	
+	@PersistenceContext
+	private EntityManager em;
 	
 	public void setDataSource(DataSource dataSource) {
 		this.dataSource = dataSource;
@@ -22,8 +25,8 @@ public class TestService {
 
 public void getData(String term) {
 	
-	Gson gson = new Gson();
 	
+
 
 	String query = "select bg.groupID, bg.groupDescription, bg.groupName, bg.groupParent_groupID from businessgroups bg where bg.groupname like ?";
 	 

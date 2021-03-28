@@ -32,8 +32,8 @@
 <jsp:include page=".././partials/sidenav.jsp"></jsp:include>
 
 <div id="content" class="can_have_sidenav">
-    <div class="p-5">
-        <div class="row mb-3">
+   <!--  <div class="p-5"> -->
+      <!--   <div class="row mb-3">
             <div class="col-lg-4">
                 <h3>
                     Hi, Welcome back!
@@ -47,20 +47,32 @@
                     Add User
                 </a>
             </div>
-        </div>
-
+        </div> -->
+        
+        
+    <div class="row mb-3">
+   
+  <div class="col-lg-12">
         <div class="card">
             <div class="card-body p-4">
-                <h5 class="mb-3">Purchase History</h5>
-
+               
+				 <h5 class="mb-3">Pages</h5>
+				 
+				 
+             
+             <select class="form-select" aria-label="Default select example" style="width: 150px;">
+				  <option value="1">Add</option>
+				  <option value="2">Edit</option>
+				  <option value="3">Delete</option>
+				</select>
                 <table class="display dataTable-table">
                     <thead>
                     <tr>
-                        <th>#</th>
-                        <th>Country</th>
-                        <th>State</th>
-                        <th>Capital</th>
-                        <th>Comments</th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
                     </tr>
                     </thead>
                     <tbody>
@@ -68,23 +80,23 @@
                         <td>1</td>
                         <td></td>
                         <td></td>
-                        <td>NYC</td>
-                        <td>Financial Capital</td>
+                        <td></td>
+                        <td></td>
                     </tr>
                     <tr>
                         <td>2</td>
                         <td></td>
                         <td></td>
-                        <td>Chicago</td>
                         <td></td>
+                      	<td></td>
                     </tr>
                     </tbody>
                 </table>
             </div>
         </div>
-
-
-        <div class="card mt-4">
+</div>
+</div>
+    <!--     <div class="card mt-4">
             <div class="card-body p-4">
                 <h5 class="mb-3">Business Survay</h5>
 
@@ -97,7 +109,7 @@
             </div>
         </div>
 
-        <div class="card mt-4">
+         <div class="card mt-4">
             <div class="card-body p-4">
                 <h5>Change color scheme</h5>
 
@@ -117,10 +129,11 @@
                 </div>
             </div>
         </div>
-    </div>
+   </div> -->
 </div>
-
+ <form action="">
 <div class="modal" id="addModal" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false">
+   
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header">
@@ -140,9 +153,10 @@
                 <button type="button" class="btn btn-primary" onclick="submitAddOption()">Save changes</button>
             </div>
         </div>
+      
     </div>
 </div>
-
+  </form>
 <jsp:include page=".././partials/floating-menu.jsp"></jsp:include>
 <jsp:include page=".././partials/footer.jsp"></jsp:include>
 
@@ -152,8 +166,10 @@
 <script src="./resources/assets/js/lib/select2.min.js"></script>
 <script src="./resources/assets/js/lib/data-tables.min.js"></script>
 <script src="./resources/assets/js/lib/key-table.min.js"></script>
+
 <script src="./resources/assets/js/lib/bootstrap-datepicker.min.js"></script>
 <script src="./resources/assets/js/custom.js"></script>
-<script src="./resources/assets/js/pages/features.js"></script>
+<script src="./resources/assets/js/pages/pages.js"></script>
+
 </body>
 </html>

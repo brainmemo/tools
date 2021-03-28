@@ -1,8 +1,7 @@
-package com.framework.tabs.controller;
+package com.frameworks.tabs.web.controller;
 
 import java.util.List;
 import java.util.Map;
-import java.util.regex.Pattern;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -10,13 +9,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.framework.tabs.entities.BusinessGroups;
-import com.framework.tabs.entities.Template;
 import com.framework.tabs.entities.TemplateRepository;
+import com.framework.tabs.persistence.model.BusinessGroups;
 import com.google.gson.Gson;
-import com.jayway.jsonpath.Criteria;
 import com.jayway.jsonpath.DocumentContext;
-import com.jayway.jsonpath.Filter;
 import com.jayway.jsonpath.JsonPath;
 
 import redis.clients.jedis.Jedis;

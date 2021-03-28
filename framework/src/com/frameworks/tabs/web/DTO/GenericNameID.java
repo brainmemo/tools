@@ -1,4 +1,4 @@
-package com.framework.tabs.service;
+package com.frameworks.tabs.web.DTO;
 
 import lombok.Data;
 

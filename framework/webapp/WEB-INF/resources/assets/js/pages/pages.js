@@ -8,7 +8,7 @@ var previousRow=-1;
 var table = $('.dataTable-table').DataTable({
     responsive: true,
     keys: true,
-    ordering: false,
+    ordering: true,
     scrollY: "25vh",
     paging: false,
     scrollCollapse: true,
@@ -18,10 +18,13 @@ var table = $('.dataTable-table').DataTable({
             "width": "0.5%", 
              "target":0,
              "render": function (data, type, full, meta  ) {
-                            return '<input type="checkbox" class="form-check-input" id = chk' + meta.row + '>';
+                            return '<input type="radio" class="form-check-input" id = chk' + meta.row + '>';
                         },
                 "defaultContent" : ""        
               },
+            
+             
+            
             { "data": "groupParent.groupName",
               "defaultContent" : "<i>Not set</i>"},
             { "data": "groupName",
@@ -42,7 +45,8 @@ if (cell.index().row != currentRow){
 console.log('Previous row ' + previousRow );
 console.log('Current row ' + currentRow );
     if ((table.rows().count() - 1) == cell.index().row) {
-        table.row.add([table.rows().count() + 1, "", "", "", ""]).draw();
+      table.row.add(["0", "", "", "", ""]).draw();
+        //table.Rows.InsertAt(myDataRow, 0);
     }
  switch(cell.index().column)
  {

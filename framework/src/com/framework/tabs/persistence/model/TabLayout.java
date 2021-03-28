@@ -1,4 +1,4 @@
-package com.framework.tabs.entities;
+package com.framework.tabs.persistence.model;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -10,11 +10,17 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToOne;
 
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+
 @Entity
+@Data
+@EqualsAndHashCode( callSuper = false)
 public class TabLayout extends GenericColumns implements Serializable {
 	
 	/**
@@ -36,54 +42,8 @@ public class TabLayout extends GenericColumns implements Serializable {
 	@OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true)
 	private TabLayout assocLayout;
 	private boolean isGroup=false;
-	@OneToOne (optional = false)
-	private Template template;
-	
-	
-	
-	 
-	public Template getTemplate() {
-		return template;
-	}
-	public void setTemplate(Template template) {
-		this.template = template;
-	}
-	public TabLayout() {
-		//super();
-	}
-	
-	
-	
-	public Long getLayoutid() {
-		return layoutid;
-	}
-	public void setLayoutid(Long layoutid) {
-		this.layoutid = layoutid;
-	}
-	public String getLayoutName() {
-		return layoutName;
-	}
-	public void setLayoutName(String layoutName) {
-		this.layoutName = layoutName;
-	}
-	public List<IndividualTabs> getTabs() {
-		return tabs;
-	}
-	public void setTabs(List<IndividualTabs> tabs) {
-		this.tabs = tabs;
-	}
-	public TabLayout getAssocLayout() {
-		return assocLayout;
-	}
-	public void setAssocLayout(TabLayout assocLayout) {
-		this.assocLayout = assocLayout;
-	}
-	public boolean isGroup() {
-		return isGroup;
-	}
-	public void setGroup(boolean isGroup) {
-		this.isGroup = isGroup;
-	}
-			
+	@OneToOne
+	@JoinColumn(name = "template", referencedColumnName = "groupID", nullable = false)
+	private BusinessGroups template;
 	
 }

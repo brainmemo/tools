@@ -1,1 +1,1 @@
-package com.framework.tabs.controller;
+package com.frameworks.tabs.web.controller;

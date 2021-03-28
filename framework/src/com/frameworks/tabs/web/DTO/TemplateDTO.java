@@ -1,4 +1,4 @@
-package com.framework.tabs.DTO;
+package com.frameworks.tabs.web.DTO;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;

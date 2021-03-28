@@ -1,4 +1,4 @@
-package com.framework.tabs.entities;
+package com.framework.tabs.persistence.model;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -11,15 +11,19 @@ import javax.persistence.OneToOne;
 
 import com.google.gson.annotations.Expose;
 
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+
 @Entity
+@Data
+@EqualsAndHashCode(callSuper = false)
 public class BusinessGroups extends GenericColumns {
-	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Expose
 	private Long groupID;
 	@Expose
-	@Column(length = 100, nullable = false)
+	@Column(length = 100, nullable = false,unique = true)
 	private String groupName;
 	@Expose
 	@Column(length = 500, nullable = false)
@@ -29,44 +33,4 @@ public class BusinessGroups extends GenericColumns {
 	private BusinessGroups groupParent;
 	@Column()
 	private boolean isGroup=false;
-	
-	public boolean isGroup() {
-		return isGroup;
-	}
-
-
-	public void setGroup(boolean isGroup) {
-		this.isGroup = isGroup;
-	}
-
-
-	public BusinessGroups() {
-		
-	}
-	
-	
-	public Long getGroupID() {
-		return groupID;
-	}
-	public void setGroupID(Long groupID) {
-		this.groupID = groupID;
-	}
-	public String getGroupName() {
-		return groupName;
-	}
-	public void setGroupName(String groupName) {
-		this.groupName = groupName;
-	}
-	public String getGroupDescription() {
-		return groupDescription;
-	}
-	public void setGroupDescription(String groupDescription) {
-		this.groupDescription = groupDescription;
-	}
-	public BusinessGroups getGroupParent() {
-		return groupParent;
-	}
-	public void setGroupParent(BusinessGroups groupParent) {
-		this.groupParent = groupParent;
-	}
 }

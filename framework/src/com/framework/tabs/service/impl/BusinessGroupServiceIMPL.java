@@ -1,4 +1,4 @@
-package com.framework.tabs.service;
+package com.framework.tabs.service.impl;
 
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -12,11 +12,13 @@ import javax.sql.DataSource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.framework.tabs.entities.BusinessGroups;
 import com.framework.tabs.entities.TemplateRepository;
+import com.framework.tabs.persistence.model.BusinessGroups;
+import com.framework.tabs.service.IBusinessGroupService;
+import com.frameworks.tabs.web.DTO.GenericNameID;
 
 @Service
-public class TemplateImpl implements Interface_template {
+public class BusinessGroupServiceIMPL implements IBusinessGroupService {
 	 static final String STATEMENT_SQLMAP = "Statement-SQL-Mapping";
 
 	@Autowired

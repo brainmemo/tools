@@ -50,15 +50,8 @@
             </div>
         </div> -->
     <div class="row mb-3">
-    <div class="col-lg-4">
-        <div class="card">
-            <div class="card-body p-4">
-            <input type="text" id="jstree_search" class="form-control mb-3" placeholder="Enter your keyword">
-                <div id="jstree_div"></div>
-            </div>
-         </div>
-    </div>
-  <div class="col-lg-8">
+   
+  <div class="col-lg-12">
         <div class="card">
             <div class="card-body p-4">
                 <h5 class="mb-3">Templates</h5>

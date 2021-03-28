@@ -3,9 +3,10 @@ package com.framework.tabs.service;
 import java.sql.SQLException;
 import java.util.List;
 
-import com.framework.tabs.entities.BusinessGroups;
+import com.framework.tabs.persistence.model.BusinessGroups;
+import com.frameworks.tabs.web.DTO.GenericNameID;
 
-public interface  Interface_template {
+public interface  IBusinessGroupService {
 
 	public List<BusinessGroups> getTemplate();
 
