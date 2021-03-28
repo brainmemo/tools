@@ -1,4 +1,4 @@
-package com.frameworks.tabs.web.DTO;
+package com.framework.tabs.web.DTO;
 
 import com.framework.tabs.persistence.model.GenericColumns;
 

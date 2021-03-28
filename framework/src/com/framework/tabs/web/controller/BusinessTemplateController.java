@@ -1,4 +1,4 @@
-package com.frameworks.tabs.web.controller;
+package com.framework.tabs.web.controller;
 
 import java.util.List;
 import java.util.Map;

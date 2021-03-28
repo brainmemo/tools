@@ -15,7 +15,7 @@ import org.springframework.stereotype.Service;
 import com.framework.tabs.entities.TemplateRepository;
 import com.framework.tabs.persistence.model.BusinessGroups;
 import com.framework.tabs.service.IBusinessGroupService;
-import com.frameworks.tabs.web.DTO.GenericNameID;
+import com.framework.tabs.web.DTO.GenericNameID;
 
 @Service
 public class BusinessGroupServiceIMPL implements IBusinessGroupService {

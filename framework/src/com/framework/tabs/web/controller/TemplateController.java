@@ -1,4 +1,4 @@
-package com.frameworks.tabs.web.controller;
+package com.framework.tabs.web.controller;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -14,8 +14,8 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.framework.tabs.persistence.model.BusinessGroups;
 import com.framework.tabs.service.IBusinessGroupService;
-import com.frameworks.tabs.web.DTO.GenericNameID;
-import com.frameworks.tabs.web.DTO.TemplateDTO;
+import com.framework.tabs.web.DTO.GenericNameID;
+import com.framework.tabs.web.DTO.TemplateDTO;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.jayway.jsonpath.DocumentContext;

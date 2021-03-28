@@ -4,7 +4,7 @@ import java.sql.SQLException;
 import java.util.List;
 
 import com.framework.tabs.persistence.model.BusinessGroups;
-import com.frameworks.tabs.web.DTO.GenericNameID;
+import com.framework.tabs.web.DTO.GenericNameID;
 
 public interface  IBusinessGroupService {
 
